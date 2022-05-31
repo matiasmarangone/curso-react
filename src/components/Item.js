@@ -7,6 +7,7 @@ const Item = ({ id, title, stock, price, pictureUrl }) => {
                <img src={pictureUrl} width="200" height="200" />
                <strong>$ {price}</strong>
                {stock} unid.
+               Ver detalles
         </div>
     );
 }
