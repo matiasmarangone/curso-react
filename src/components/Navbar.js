@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from "react-router-dom";
 import CartWidget from './CartWidget';
 
 const Navbar = () => {
@@ -14,20 +15,18 @@ const Navbar = () => {
     <div className="collapse navbar-collapse" id="navbarScroll">
       <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">Inicio</a>
+          <a className="nav-link active" aria-current="page" href="/">Inicio</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Remeras</a>
+          <a className="nav-link" href="/category/1">1</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Sweaters</a>
+          <a className="nav-link" href="/category/2">2</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Camperas</a>
+          <a className="nav-link" href="/category/3">3</a>
         </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Pantalones</a>
-        </li>
+      
        
       </ul>
      

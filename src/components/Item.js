@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom';
 
 const Item = ({ id, title, stock, price, pictureUrl }) => {
     return(
@@ -7,7 +7,7 @@ const Item = ({ id, title, stock, price, pictureUrl }) => {
                <img src={pictureUrl} width="200" height="200" />
                <strong>$ {price}</strong>
                {stock} unid.
-               Ver detalles
+               <a href={`/item/${id}`}>Ver detalles</a>
         </div>
     );
 }
