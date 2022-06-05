@@ -22,6 +22,12 @@ const ItemListContainer = ({greeting}) => {
     }, [datos]);
 
 
+    useEffect(() => {
+        return (() => {
+            setDatos([]);
+        })
+    }, []);
+
     return(
         <div>
            
