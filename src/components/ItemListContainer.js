@@ -4,16 +4,13 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 const { products } = require('../utils/products');
 
-
-
-const ItemListContainer = ({greeting}) => {
+const ItemListContainer = () => {
     const [datos, setDatos] = useState([]);
     const { idCategory } = useParams();
- 
 
-     //componentDidUpdate
-     useEffect(() => {
-        customFetch(2000, products.filter(item => {
+    //componentDidUpdate
+    useEffect(() => {
+        customFetch(500, products.filter(item => {
             if (idCategory === undefined) return item;
             return item.categoryId === parseInt(idCategory)
         }))
@@ -21,19 +18,15 @@ const ItemListContainer = ({greeting}) => {
             .catch(err => console.log(err))
     }, [datos]);
 
-
+    //componentWillUnmount
     useEffect(() => {
         return (() => {
             setDatos([]);
         })
     }, []);
 
-    return(
-        <div>
-           
+    return (
             <ItemList items={datos} />
-            
-        </div>
     );
 }
 

@@ -1,42 +1,35 @@
 import { useEffect, useState } from 'react';
 
-
-const ItemCount = ({stock,initial,onAdd}) => {
-    const [count,setCount] = useState("0");
+const ItemCount = ({ stock = 0, initial = 1,  onAdd }) => {
+    const [count, setCount] = useState(0);
 
     useEffect(() => {
         setCount(initial);
     },[]);
-
-    const decrement = () => {
-        if (count >= initial+1) {
-            setCount(count - 1);
-        }
-    }
 
     const increment = () => {
         if (count < stock) {
             setCount(count + 1);
         }
     }
-
- 
-
-    return(
-        <div>
-            <button type="button" onClick={decrement} className="btn btn-secondary">-</button>
-            
-            
-            
+    
+    const decrement = () => {
+        if (count > initial+1) {
+            setCount(count - 1);
+        }
+    }
+    return (
+        <>
+            <button variant="text" onClick={increment}>+</button>
             {count}
-         
-            <button type="button" onClick={increment} className="btn btn-secondary">+</button>
-            
+            <button variant="text" onClick={decrement}>-</button>
             {
-                stock ? <button type="button" onClick={() => onAdd(count)} className="btn btn-primary">Add to Cart</button> : <button type="button" onClick={() => onAdd(count)} className="btn btn-primary" disabled>Add to Cart</button>
+                stock && count
+                ? <button variant="contained" color="primary" onClick={() => onAdd(count)}>Add to Cart</button>
+                : <button variant="contained" disabled>Add to Cart</button>
             }
             
-        </div>
+        </>
     );
 }
 
