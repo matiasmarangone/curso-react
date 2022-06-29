@@ -2,13 +2,14 @@ import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ItemCount from './ItemCount';
 import { CartContext } from './CartContext';
+import { Button } from 'bootstrap';
 
 const ItemDetail = ({ item }) => {
     const [itemCount, setItemCount] = useState(0);
     const test = useContext(CartContext);
 
     const onAdd = (qty) => {
-        alert("Has seleccionado " + qty + " items.");
+        alert("You have selected " + qty + " items.");
         setItemCount(qty);
         test.addToCart(item, qty);
     }
@@ -16,28 +17,27 @@ const ItemDetail = ({ item }) => {
     return (
         <>
         {
-            item && item.pictureUrl
+            item && item.image
             ? 
             <div>
-               <div className="card" style={{width: "18rem"}}>
-            <img className="card-img-top" src={item.pictureUrl} alt="Card image cap" />
-            <div className="card-body">
-                <div className="card-text">
-                {item.title} <br />
-                <strong>$ {item.price}</strong> <br />
-                {item.stock} unidades en stock <br />
-                {
+                <div>
+                    
+                    <img src={item.image[0]} />
+                    
+                    <div>
+                        {item.name}
+                        {item.description}
+                        $ {item.cost}
+                        {item.stock} unidades en stock
+                    </div>
+                    {
                         itemCount === 0
                         ? <ItemCount stock={item.stock} initial={itemCount} onAdd={onAdd} />
-                        : <Link to='/cart' style={{textDecoration: "none"}}>CheckOut</Link>
-                }
+                        : <a href='/cart' style={{textDecoration: "none"}}><Button variant="contained" color="secondary">CheckOut</Button></a>
+                    }
                 </div>
-            
             </div>
-            </div>
-
-            </div>
-            : <div>Cargando..!!</div>
+            : <p>Cargando...</p>
         }
         </>
     );

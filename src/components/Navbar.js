@@ -1,44 +1,23 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
-import CartWidget from './CartWidget';
+import CartWidget from "./CartWidget";
 
-const Navbar = () => {
-    return(<div>
-        
 
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-  <div className="container-fluid">
-    <a className="navbar-brand" href="/">QUICKBUY</a>
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-    <div className="collapse navbar-collapse" id="navbarScroll">
-      <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
-        <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="/">Inicio</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="/category/1">1</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="/category/2">2</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="/category/3">3</a>
-        </li>
-      
-       
-      </ul>
-     
+const NavBar = () => {
+  return (
+    <div position="relative">
+      <div>
+
+        <a href='/' style={{ textDecoration: "none", color: "white" }}>QUICKBUY</a>
+
+        <a href='/category/MbCjgT1qxGT28TQHIDxs' style={{ textDecoration: "none", color: "white" }}>cat 1</a>
+        <a href='/category/WuwoOSINFxcXZiKm3R1x' style={{ textDecoration: "none", color: "white" }}>cat 2</a>
+        <a href='/category/i3pqaIGbQs2vvEuquCw5' style={{ textDecoration: "none", color: "white" }}>cat 3</a>
+
+        <a href='/cart' style={{ textDecoration: "none", color: "white" }}><CartWidget /></a>
+
+      </div>
     </div>
-    <Link to='/cart'><CartWidget /></Link>
-  </div>
-</nav>
-      
-</div>);
+  );
 }
 
-export default Navbar;
-
-
-
+export default NavBar;

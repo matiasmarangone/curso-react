@@ -1,39 +1,33 @@
+import { Button } from 'bootstrap';
 import { useEffect, useState } from 'react';
 
-
-const ItemCount = ({stock,initial,onAdd}) => {
-    const [count,setCount] = useState("0");
+const ItemCount = ({ stock = 0, initial = 1,  onAdd }) => {
+    const [count, setCount] = useState(0);
 
     useEffect(() => {
         setCount(initial);
     },[]);
-
-    const decrement = () => {
-        if (count >= initial+1) {
-            setCount(count - 1);
-        }
-    }
 
     const increment = () => {
         if (count < stock) {
             setCount(count + 1);
         }
     }
-
- 
-
-    return(
+    
+    const decrement = () => {
+        if (count > initial+1) {
+            setCount(count - 1);
+        }
+    }
+    return (
         <div>
-            <button type="button" onClick={decrement} className="btn btn-secondary">-</button>
-            
-            
-            
+            <Button variant="text" onClick={increment}>+</Button>
             {count}
-         
-            <button type="button" onClick={increment} className="btn btn-secondary">+</button>
-            
+            <Button variant="text" onClick={decrement}>-</Button>
             {
-                stock ? <button type="button" onClick={() => onAdd(count)} className="btn btn-primary">Add to Cart</button> : <button type="button" onClick={() => onAdd(count)} className="btn btn-primary" disabled>Add to Cart</button>
+                stock && count
+                ? <Button variant="contained" color="primary" onClick={() => onAdd(count)}>Add to Cart</Button>
+                : <Button variant="contained" disabled>Add to Cart</Button>
             }
             
         </div>

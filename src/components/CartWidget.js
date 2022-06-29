@@ -1,15 +1,14 @@
-import 'bootstrap-icons/font/bootstrap-icons.css';
-
+import { useContext, useEffect } from 'react';
+import { CartContext } from './CartContext';
 
 const CartWidget = () => {
-    return(
+    const test = useContext(CartContext);
+
+    return (
         <div>
-            
-            <i className="bi bi-cart"></i>
-          
+            {test.calcItemsQty()}
         </div>
     );
 }
-
 
 export default CartWidget;
