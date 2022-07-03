@@ -1,23 +1,28 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { AppBar } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import CartWidget from "./CartWidget";
-
+import { Wrapper, Logo, MenuItem, Left, Center, Right } from './styledComponents';
 
 const NavBar = () => {
-  return (
-    <div position="relative">
-      <div>
-
-        <a href='/' style={{ textDecoration: "none", color: "white" }}>QUICKBUY</a>
-
-        <a href='/category/MbCjgT1qxGT28TQHIDxs' style={{ textDecoration: "none", color: "white" }}>cat 1</a>
-        <a href='/category/WuwoOSINFxcXZiKm3R1x' style={{ textDecoration: "none", color: "white" }}>cat 2</a>
-        <a href='/category/i3pqaIGbQs2vvEuquCw5' style={{ textDecoration: "none", color: "white" }}>cat 3</a>
-
-        <a href='/cart' style={{ textDecoration: "none", color: "white" }}><CartWidget /></a>
-
-      </div>
-    </div>
-  );
+    return (
+        <AppBar position="relative">
+            <Wrapper>
+                <Left>
+                    <Link to='/' style={{textDecoration: "none", color: "white"}}><Logo>QUICKBUY</Logo></Link>
+                
+                
+                    <Link to='/category/1' style={{textDecoration: "none", color: "white"}}><MenuItem>Urbanas</MenuItem></Link>
+                    <Link to='/category/2' style={{textDecoration: "none", color: "white"}}><MenuItem>Running</MenuItem></Link>
+                    <Link to='/category/3' style={{textDecoration: "none", color: "white"}}><MenuItem>Botines</MenuItem></Link>                    
+                    </Left>
+                <Right>
+                    <MenuItem><Link to='/cart' style={{textDecoration: "none", color: "white"}}><CartWidget /></Link></MenuItem>
+                </Right>
+            </Wrapper>
+        </AppBar>
+    );
 }
 
 export default NavBar;
