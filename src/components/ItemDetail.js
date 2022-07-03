@@ -12,7 +12,7 @@ const ItemDetail = ({ item }) => {
     const test = useContext(CartContext);
 
     const onAdd = (qty) => {
-        alert("You have selected " + qty + " items.");
+        
         setItemCount(qty);
         test.addToCart(item, qty);
     }
@@ -36,7 +36,7 @@ const ItemDetail = ({ item }) => {
                     {
                         itemCount === 0
                         ? <ItemCount stock={item.stock} initial={itemCount} onAdd={onAdd} />
-                        : <Link to='/cart' style={{textDecoration: "none"}}><Button variant="contained" color="secondary">CheckOut</Button></Link>
+                        : <Link to='/cart' style={{textDecoration: "none"}}><Button variant="contained" color="secondary">Finalizar Compra</Button></Link>
                     }
                 </WrapperDetail>
             </DetailContainer>

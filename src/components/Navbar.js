@@ -7,7 +7,7 @@ import { Wrapper, Logo, MenuItem, Left, Center, Right } from './styledComponents
 
 const NavBar = () => {
     return (
-        <AppBar position="relative">
+        <AppBar position="relative" style={{ background: '#2E3B55' }}>
             <Wrapper>
                 <Left>
                     <Link to='/' style={{textDecoration: "none", color: "white"}}><Logo>QUICKBUY</Logo></Link>

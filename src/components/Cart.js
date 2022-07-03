@@ -113,7 +113,7 @@ const Cart = () => {
     }
   
     createOrderInFirestore()
-      .then(result => alert('Your order has been created. Please take note of the ID of your order.\n\n\nOrder ID: ' + result.id + '\n\n'))
+      .then(result => alert('Su orden de compra fue creada: \n\n\nOrder ID: ' + result.id + '\n\n'))
       .catch(err => console.log(err));
   
     test.removeList();
@@ -122,13 +122,13 @@ const Cart = () => {
 
     return (
         <WrapperCart>
-            <TitleCart>YOUR CART</TitleCart>
+            <TitleCart>Su compra</TitleCart>
             <Top>
-                <Link to='/'><TopButton>CONTINUE SHOPPING</TopButton></Link>
+                <Link to='/'><TopButton>Seguir comprando</TopButton></Link>
                 {
                     (test.cartList.length > 0)
-                    ? <TopButton type="filled" onClick={test.removeList}>DELETE ALL PRODUCTS</TopButton>
-                    : <TopText>Your cart is empty</TopText>
+                    ? <TopButton type="filled" onClick={test.removeList}>Eliminar todos los productos</TopButton>
+                    : <TopText>Su carro está vacio, agregue productos para continuar</TopText>
                 }
             </Top>
             <ContentCart>
@@ -142,16 +142,16 @@ const Cart = () => {
                                 <ImageCart src={item.imgItem} />
                                 <Details>
                                 <span>
-                                    <b>Product:</b> {item.nameItem}
+                                    <b>Producto seleccionado:</b> {item.nameItem}
                                 </span>
-                                <TopButton type="filled" onClick={() => test.deleteItem(item.idItem)}>DELETE</TopButton>
+                                <TopButton type="filled" onClick={() => test.deleteItem(item.idItem)}>Eliminar</TopButton>
                                 </Details>
                             </ProductDetail>
                             <PriceDetail>
                                 <ProductAmountContainer>
                                 <ProductAmount>{item.qtyItem} item(s)</ProductAmount>
                                 /
-                                <ProductAmount>$ {item.costItem} each</ProductAmount>
+                                <ProductAmount>$ {item.costItem} cada uno</ProductAmount>
                                 </ProductAmountContainer>
                                 <ProductPrice>$ {test.calcTotalPerItem(item.idItem)} </ProductPrice>
                             </PriceDetail>
@@ -162,24 +162,24 @@ const Cart = () => {
                 {
                     test.cartList.length > 0 &&
                         <Summary>
-                            <SummaryTitle>ORDER SUMMARY</SummaryTitle>
+                            <SummaryTitle>Resumen de compra</SummaryTitle>
                             <SummaryItem>
                                 <SummaryItemText>Subtotal</SummaryItemText>
                                 <SummaryItemPrice><FormatNumber number={test.calcSubTotal()} /></SummaryItemPrice>
                             </SummaryItem>
                             <SummaryItem>
-                                <SummaryItemText>Taxes</SummaryItemText>
+                                <SummaryItemText>Impuestos</SummaryItemText>
                                 <SummaryItemPrice><FormatNumber number={test.calcTaxes()} /></SummaryItemPrice>
                             </SummaryItem>
                             <SummaryItem>
-                                <SummaryItemText>Taxes Discount</SummaryItemText>
+                                <SummaryItemText>Descuento por compra online</SummaryItemText>
                                 <SummaryItemPrice><FormatNumber number={-test.calcTaxes()} /></SummaryItemPrice>
                             </SummaryItem>
                             <SummaryItem type="total">
                                 <SummaryItemText>Total</SummaryItemText>
                                 <SummaryItemPrice><FormatNumber number={test.calcTotal()} /></SummaryItemPrice>
                             </SummaryItem>
-                            <Button onClick={createOrder}>CHECKOUT NOW</Button>
+                            <Button onClick={createOrder}>Comprar</Button>
                         </Summary>
                 }
             </Bottom>
